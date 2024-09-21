@@ -1,163 +1,70 @@
 import turtle as t 
-import random
 
-def tweak():
-     t.pencolor("black")
-     t.pensize(3)
+def tweak(): #Setting up turtle for the drawing
+    t.pencolor("black")
+    t.pensize(3)
+    t.speed(10)
 
-def cake(radius):
+def plate(radius): #Drawing the plate for the cake
+    t.pendown()
+    t.fillcolor("gray90")
+    t.pencolor("gray90")
+    t.begin_fill()
+    t.forward(radius*1.5) #Bottom side first half
+    t.left(90)
+    t.forward(radius*0.2) #Right side
+    t.left(90)
+    t.forward(radius*3) #Top side
+    t.left(90)
+    t.forward(radius*0.2) #Left side
+    t.left(90)
+    t.forward(radius*1.5) #Bottom side second half
+    t.end_fill()
+    t.penup()
 
-    # if radius < table 
-        layer = random.randint(3,3)
-        print("your got", layer, "layers")
-        if layer == 1:
-            cl_1 = input("what color do you want it to be: ")
+def prepare_next_layer(distance): #Moving the turtle to the next layer of the cake
+    t.setheading(90) #Setting the turtle to face up
+    t.forward(distance) 
 
-            t.fillcolor(cl_1)
-            t.begin_fill()
-            
-            t.forward(radius*3)
-            t.left(90)
-            t.forward(radius*3)
-            t.left(90)
-            t.forward(radius*3)
-            t.left(90)
-            t.forward(radius*3)
-            t.left(90)
-            t.forward(radius*3)
-            t.left(90)
-            t.end_fill()
-        elif layer == 2:
-            cl_1 = input("what color do you want the first layer to be: ")
-            cl_2 = input("what color do you want the second layer to be: ")
-            #layer 1
-            t.fillcolor(cl_1)
-            t.pencolor(cl_1)
-            t.begin_fill()
-            t.forward(radius*3)
-            t.left(90)
-            t.forward(radius)
-            t.left(90)
-            t.forward(radius*3)
-            t.left(90)
-            t.forward(radius)
-            t.end_fill()
-           
-           #l1 positioning
-            t.left(90)
-            t.forward(radius*3)
-            t.left(90)
-            t.forward(radius)
-            t.left(90)
-            t.forward(radius*3/2 )
-            
+def cake_layer(color, width, height): #Drawing the cake layers with the given color, width, and height
+    t.setheading(0)
+    t.pendown()
+    t.fillcolor(color)
+    t.pencolor(color)
+    t.begin_fill()
+    t.forward(width) #Bottom side first half
+    t.left(90)
+    t.forward(height) #Right side
+    t.left(90)
+    t.forward(width*2) #Top side
+    t.left(90)
+    t.forward(height) #Left side
+    t.left(90)
+    t.forward(width) #Bottom side second half
+    t.end_fill()
+    t.penup()
 
-            
-        #layer 2
+def cake(radius): #Drawing the cake with the given radius
+    #Setting up the height of the layers using the radius
+    layer1_height = radius*0.6 
+    layer2_height = radius*0.3
+    layer3_height = radius*0.15
+    #Drawing the layers
+    cake_layer("DeepPink2", radius, layer1_height) #Bottom layer
+    prepare_next_layer(layer1_height)
+    cake_layer("gray20", radius, layer2_height) #Middle layer 1
+    prepare_next_layer(layer2_height)
+    cake_layer("chocolate", radius, layer3_height) #Middle layer 2
+    prepare_next_layer(layer3_height)
+    cake_layer("bisque", radius, layer1_height) #Top of the cake
 
-            t.fillcolor(cl_2)
-            t.pencolor(cl_2)
-            t.begin_fill()
-            t.left(180)
-            t.forward((radius*1/3)*3)
-            t.left(90)            
-            t.forward(radius)
-            t.left(90)
-            t.forward((radius*1/3)*6)
-            t.left(90)
-            t.forward(radius)
-            t.left(90)
-            t.forward((radius*1/3)*3)
-            t.end_fill()
-
-            #l2 postioning
-
-            t.left(90)
-            t.forward(radius)
-            t.right(90)
-
-        else:
-            cl_1 = input("what color do you want the first layer to be: ")
-            cl_2 = input("what color do you want the second layer to be: ")
-            cl_3 = input("what color do you want the third layer to be: ")
-            
-            #layer 1
-            
-            
-            t.fillcolor(cl_1)
-            t.pencolor(cl_1)
-            t.begin_fill()
-            t.forward(radius*3)
-            t.left(90)
-            t.forward(radius)
-            t.left(90)
-            t.forward(radius*3)
-            t.left(90)
-            t.forward(radius)
-            t.end_fill()
-           
-           #l1 positioning
-            t.left(90)
-            t.forward(radius*3)
-            t.left(90)
-            t.forward(radius)
-            t.left(90)
-            t.forward(radius*3/2 )
-            
-
-            
-        #layer 2
-
-            t.fillcolor(cl_2)
-            t.pencolor(cl_2)
-            t.begin_fill()
-            t.left(180)
-            t.forward((radius*1/3)*3)
-            t.left(90)            
-            t.forward(radius)
-            t.left(90)
-            t.forward((radius*1/3)*6)
-            t.left(90)
-            t.forward(radius)
-            t.left(90)
-            t.forward((radius*1/3)*3)
-            t.end_fill()
-
-            #l2 postioning
-
-            t.left(90)
-            t.forward(radius)
-            t.right(90)
-
-            #layer 3
-
-            t.fillcolor(cl_3)
-            t.pencolor(cl_3)
-            t.begin_fill()
-            t.forward((radius*1/3)*2)
-            t.left(90)            
-            t.forward(radius)
-            t.left(90)
-            t.forward((radius*1/3)*4)
-            t.left(90)
-            t.forward(radius)
-            t.left(90)
-            t.forward((radius*1/3)*2)
-            t.end_fill()
-
-
-        
-    # else
-        # cake(radius= int(input("please enter the size you want for the cake: ")))
-
-
-
-def test_main():
-    length = int(input("please enter the size you want for the cake: "))
-    
+def main():
+    length = int(input("Enter the radius of the cake: ")) #Asking the user for the radius of the cake
     tweak()
-    cake(radius= length)
-    input("please press enter to leave: ")
+    plate(length)
+    prepare_next_layer(length*0.2) #Moving the turtle to the first layer of the cake
+    cake(length)
+    t.exitonclick()
 
 if __name__ == "__main__":
-    test_main()
+    main()

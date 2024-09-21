@@ -1,15 +1,15 @@
 import turtle as t
 
-def table(): #Saloni
+def table():
     pass #Delete this line when you write your code
 
-def cake(): #Mehdi
+def cake():
     pass #Delete this line when you write your code
 
-def cake_decorations(): #Noureldin
+def cake_decorations():
     pass #Delete this line when you write your code
 
-def background(): #Tariq
+def background():
     pass #Delete this line when you write your code
 
 def main():
