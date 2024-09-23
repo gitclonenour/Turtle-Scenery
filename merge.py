@@ -3,7 +3,7 @@ This file draws a table with a cake on top of it. The user can input the color o
 The cake will have four layers with different colors. 
 The cake will also have decorations on top. 
 The table will have four legs and a top with the given color, length, and height.
-Project by: Noureldin, Saloni, and Mehdi
+Project by: Noureldin, Saloni, Tariq, and Mehdi
 """
 import turtle as t
 
@@ -296,7 +296,7 @@ def main(): #Main function to draw the table and the cake
     plate(cake_radius) #Drawing the plate for the cake
     prepare_next_layer(cake_radius*0.2) #Moving the turtle to the first layer of the cake, above the plate
     cake(cake_radius) #Drawing the cake
-    
+
     t.hideturtle() #Hiding the turtle
     print("\n\nEnjoy your cake!")
     t.exitonclick()
