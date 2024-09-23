@@ -92,15 +92,15 @@ def draw_table(length, height, color): #Drawing the table with the given length,
     t.penup()
     t.goto(0,0)  
     t.pendown()
-    t.forward(length)    
+    t.forward(length)   #Bottom half 1 
     t.right(90)
     t.forward(height)    
     t.right(90)
-    t.forward(length*2)   
+    t.forward(length*2)   #top
     t.right(90)
     t.forward(height)     
     t.right(90)
-    t.forward(length)
+    t.forward(length)   #bottom half 2
     t.end_fill()
     t.penup()
     
