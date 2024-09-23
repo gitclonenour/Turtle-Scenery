@@ -174,7 +174,6 @@ def candle(color): #Candle drawing function
     t.left(180)
     t.forward(30)
 
-    t.pencolor("orange")
     t.fillcolor("orange")
     t.begin_fill()
     t.pendown()
@@ -243,6 +242,7 @@ def main(): #Main function to draw the table and the cake
     t.goto(0,0) #Moving the turtle to the center of the plate
     prepare_next_layer(cake_radius*0.2) #Moving the turtle to the first layer of the cake
     cake(cake_radius) #Drawing the cake
+    print("\n\nEnjoy your cake!")
     t.exitonclick()
 
 if __name__ == "__main__":
