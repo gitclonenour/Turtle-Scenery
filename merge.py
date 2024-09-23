@@ -7,6 +7,8 @@ Project by: Noureldin, Saloni, Tariq, and Mehdi
 """
 import turtle as t
 
+#Noureldin
+
 #Setting up the directions for the setheading() function
 east = 0
 north = 90
@@ -20,7 +22,6 @@ def tweak(): #Setting up turtle for the drawing
     t.pensize(2)
     t.speed(7)
 
-#Noureldin
 def plate(radius): #Drawing the plate for the cake
     t.goto(0,0)
     t.setheading(east)
@@ -79,6 +80,7 @@ def cake(radius): #Drawing the cake with the given radius
 
     decorations(star_location, radius)  # Pass radius to the decorations function
 
+#*********************************************************************************************************************
 #Saloni
 def draw_table(length, height, color): #Drawing the table with the given length, height, and color
     def reset_turtle(heading, distance): #Resetting the turtle to the starting position for drawing the next leg
@@ -134,6 +136,7 @@ def draw_table(length, height, color): #Drawing the table with the given length,
     t.forward(80)
     t.penup()
 
+#*********************************************************************************************************************
 #Mehdi
 def decorations(second_layer_height, radius): #Drawing decorations on the cake
     print("\nTime to decorate your cake!\n")
@@ -207,6 +210,7 @@ def star(starlocation,color): #Star drawing function
     t.right(144)
     t.end_fill()
 
+#*********************************************************************************************************************
 #Tariq
 def draw_triangle(color, x, y):
     t.speed(0)
@@ -258,7 +262,7 @@ def draw_background_decorations(): #Drawing the background decorations for the t
     draw_triangle("teal", 420, 400)
 
 
-
+#Noureldin.
 def main(): #Main function to draw the table and the cake
 
     print("\n\nWelcome to the cake drawing program!")
@@ -270,7 +274,6 @@ def main(): #Main function to draw the table and the cake
     print("\nWe recommend a cake radius of at least 50.")
     cake_radius = int(input("Enter the radius of the cake: ")) #Asking the user for the radius of the cake
     
-    #Validity checks by Noureldin.
     #Limitation: The program only does this validity check once. If the user enters an invalid value again, the program will proceed.
     if table_length > window_width: #Checking if the table is too big for the screen
         print("\nThe table is too big for the screen!")
