@@ -132,7 +132,7 @@ def draw_table(length, height, color): #Drawing the table with the given length,
 
 #Mehdi
 def decorations(width): #Drawing decorations on the cake
-    cake_layer("white", width+10, 20) #Drawing a red square on top of the cake
+    cake_layer("white", width+10, 20)
 
 def main():
 

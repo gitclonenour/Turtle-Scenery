@@ -65,7 +65,7 @@ def cake(radius): #Drawing the cake with the given radius
     layer1_height = radius*0.6 
     layer2_height = radius*0.3
     layer3_height = radius*0.15
-    star_location = layer1_height + layer2_height
+    star_location = radius*1.15
     #Drawing the layers
     cake_layer("DeepPink2", radius, layer1_height) #Bottom layer
     prepare_next_layer(layer1_height)
@@ -134,34 +134,32 @@ def draw_table(length, height, color): #Drawing the table with the given length,
     t.penup()
 
 #Mehdi
-
-def decorations(second_layer_height, radius):
-    candle_question = input("Do you want a candle [y/n]?: ")
-
+def decorations(second_layer_height, radius): #Drawing decorations on the cake
+    print("\nTime to decorate your cake!\n")
     x_place = t.xcor()  
     y_place = t.ycor()  
-
-    if candle_question == "y" or candle_question== "yes":
-        color = input("What color do you want the candle?: ")
-        candle(color)
-    else:
-        print("No candle.")
 
     frosting_question = input("Do you want frosting [y/n]?: ")
     if frosting_question == "y" or frosting_question == "yes":
         color = input("What color do you want the frosting?: ")
-        frosting(color, x_place, y_place, radius)  
+        frosting(color, radius)  
     else:
         print("No frosting.")
+    
+    candle_question = input("\nDo you want a candle [y/n]?: ")
+    if candle_question == "y" or candle_question== "yes":
+        candle("red")
+    else:
+        print("No candle.")
 
-    star_question = input("Do you want a star [y/n]?: ")
+    star_question = input("\nDo you want a star [y/n]?: ")
     if star_question == "y" or star_question== "yes":
-        color = input("What color do you want the star?: ")
-        star(second_layer_height + 30, color)  
+        star(second_layer_height + 30, "yellow")  
     else:
         print("No star.")
 
-def candle(color):
+def candle(color): #Candle drawing function
+    prepare_next_layer(20)
     t.pencolor(color)
     t.fillcolor(color)
     t.begin_fill()
@@ -187,34 +185,13 @@ def candle(color):
     t.forward(5)
     t.end_fill()
 
-def frosting(color, x_place, y_place, radius):
-    t.penup()
-    t.goto(x_place - radius, y_place)
-    t.pendown()
+def frosting(color, width):
+    cake_layer(color, width*1.15, 20) #Drawing a frosting on top of the cake
 
-    t.pencolor(color)
-    t.fillcolor(color)
-
-    t.begin_fill()
-    t.setheading(0)
-    t.forward(radius * 2)
-    t.right(90)
-    t.forward(10)
-    t.right(95)
-    t.forward(radius)
-    t.circle(5,30)
-    t.right(10)
-    t.forward(radius)
-    t.setheading(90)
-    t.forward(10)
-    t.end_fill()
-
-    t.penup()
-
-def star(starlocation,color):    
+def star(starlocation,color): #Star drawing function
     t.penup()
     t.goto(0, starlocation)  
-    t.setheading(0)  
+    t.setheading(east)  
     t.pendown()
     t.fillcolor(color)
     t.pencolor(color)  
@@ -231,24 +208,16 @@ def star(starlocation,color):
     t.right(144)
     t.end_fill()
 
-def main():
+def main(): #Main function to draw the table and the cake
 
-    t.screensize(canvwidth=window_width, canvheight=window_height, bg="LightBlue1")  #Setting up the screen
-
-    """
+    print("\n\nWelcome to the cake drawing program!")
     table_color = input("Enter the color of the table: ") #Asking the user for the color of the table
-    print("\nWe recommend a table length of at least 200.")
+    print("\nWe recommend a table length between 200 and 400.")
     table_length = int(input("Enter the length of the table: ")) #Asking the user for the length of the table
     print("\nWe recommend a table height of 40.")
     table_height = int(input("Enter the height of the table: ")) #Asking the user for the height of the table
+    print("\nWe recommend a cake radius of at least 50.")
     cake_radius = int(input("Enter the radius of the cake: ")) #Asking the user for the radius of the cake
-    """
-    #Debugging
-    
-    table_color = "brown"
-    table_length = 401
-    table_height = 40
-    cake_radius = 75
     
     #Validity checks by Noureldin.
     #Limitation: The program only does this validity check once. If the user enters an invalid value again, the program will proceed.
@@ -267,6 +236,7 @@ def main():
     else:
         print("The cake fits on the table! Enjoy your cake!")
 
+    t.screensize(canvwidth=window_width, canvheight=window_height, bg="LightBlue1")  #Setting up the screen
     tweak() #Setting up the turtle for drawing
     draw_table(table_length, table_height, table_color) #Drawing the table
     plate(cake_radius) #Drawing the plate for the cake
