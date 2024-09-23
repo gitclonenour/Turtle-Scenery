@@ -38,6 +38,7 @@ def plate(radius): #Drawing the plate for the cake
     t.forward(radius*1.5) #Bottom side second half
     t.end_fill()
     t.penup()
+    t.goto(0,0) #Moving the turtle to the center of the plate
 
 def prepare_next_layer(distance): #Moving the turtle to the next layer of the cake
     t.setheading(north) #Setting the turtle to face up
@@ -80,7 +81,6 @@ def cake(radius): #Drawing the cake with the given radius
 
 #Saloni
 def draw_table(length, height, color): #Drawing the table with the given length, height, and color
-    
     def reset_turtle(heading, distance): #Resetting the turtle to the starting position for drawing the next leg
         t.goto(0,-height) #Moving the turtle to the bottom of the table
         t.setheading(heading)
@@ -90,43 +90,44 @@ def draw_table(length, height, color): #Drawing the table with the given length,
     t.fillcolor(color)
     t.begin_fill()
     t.penup()
-    t.goto(0,0)  
+    t.goto(0,0)
+    t.setheading(east)  
     t.pendown()
-    t.forward(length)   #Bottom half 1 
+    t.forward(length)   #Top half 1 
     t.right(90)
     t.forward(height)    
     t.right(90)
-    t.forward(length*2)   #top
+    t.forward(length*2)   #Bottom of the table
     t.right(90)
     t.forward(height)     
     t.right(90)
-    t.forward(length)   #bottom half 2
+    t.forward(length)   #Top half 2
     t.end_fill()
     t.penup()
     
     #Drawing legs from left to right
-    reset_turtle(180, 0.9)
+    reset_turtle(west, 0.9)  #Moving the turtle 90% of the table's length in the west direction.
     #First leg
     t.pendown()
     t.setheading(south)
     t.forward(100)
     t.penup()
 
-    reset_turtle(180, 0.6)
+    reset_turtle(west, 0.6)
     #Second leg
     t.pendown()
     t.setheading(south)
     t.forward(80)
     t.penup()
 
-    reset_turtle(0, 0.9)
+    reset_turtle(east, 0.9)
     #Third leg
     t.pendown()
     t.setheading(south)
     t.forward(100)
     t.penup()
 
-    reset_turtle(0, 0.6)
+    reset_turtle(east, 0.6)
     #Fourth leg
     t.pendown()
     t.setheading(south)
@@ -136,8 +137,6 @@ def draw_table(length, height, color): #Drawing the table with the given length,
 #Mehdi
 def decorations(second_layer_height, radius): #Drawing decorations on the cake
     print("\nTime to decorate your cake!\n")
-    x_place = t.xcor()  
-    y_place = t.ycor()  
 
     frosting_question = input("Do you want frosting [y/n]?: ")
     if frosting_question == "y" or frosting_question == "yes":
@@ -193,7 +192,8 @@ def star(starlocation,color): #Star drawing function
     t.setheading(east)  
     t.pendown()
     t.fillcolor(color)
-    t.pencolor(color)  
+    t.pencolor("black")
+    t.pensize(1)
     t.begin_fill()
     t.forward(20)
     t.right(144)
@@ -206,6 +206,58 @@ def star(starlocation,color): #Star drawing function
     t.forward(20)
     t.right(144)
     t.end_fill()
+
+#Tariq
+def draw_triangle(color, x, y):
+    t.speed(0)
+    t.penup()
+    t.goto(x, y)
+    t.pendown()
+    t.fillcolor(color)
+    t.begin_fill()
+    t.setheading(180)  # Set the t facing downwards
+    #Drawing the triangle sides
+    t.forward(50)  # Triangle side length
+    t.left(120)    # Turn the t 120 degrees
+    t.forward(50)
+    t.left(120)
+    t.forward(50)
+    t.left(120)
+    t.end_fill()
+
+# Function to draw a connecting line between triangles
+def draw_line(x_start, y_start, x_end, y_end):
+    t.penup()
+    t.goto(x_start, y_start)
+    t.pendown()
+    t.goto(x_end, y_end)
+
+def draw_background_decorations(): #Drawing the background decorations for the table
+    draw_triangle("red", -350, 400)
+    draw_line(-350, 400, -280, 400)
+    draw_triangle("blue", -280, 400)
+    draw_line(-280, 400, -210, 400)
+    draw_triangle("green", -210, 400)
+    draw_line(-210, 400, -140, 400)
+    draw_triangle("yellow", -140, 400)
+    draw_line(-140, 400, -70, 400)
+    draw_triangle("purple", -70, 400)
+    draw_line(-70, 400, 0, 400)
+    draw_triangle("orange", 0, 400)
+    draw_line(0, 400, 70, 400)
+    draw_triangle("cyan", 70, 400)
+    draw_line(70, 400, 140, 400)
+    draw_triangle("magenta", 140, 400)
+    draw_line(140, 400, 210, 400)
+    draw_triangle("pink", 210, 400)
+    draw_line(210, 400, 280, 400)
+    draw_triangle("brown", 280, 400)
+    draw_line(280, 400, 350, 400)
+    draw_triangle("lime", 350, 400)
+    draw_line(350, 400, 420, 400)
+    draw_triangle("teal", 420, 400)
+
+
 
 def main(): #Main function to draw the table and the cake
 
@@ -221,27 +273,31 @@ def main(): #Main function to draw the table and the cake
     #Validity checks by Noureldin.
     #Limitation: The program only does this validity check once. If the user enters an invalid value again, the program will proceed.
     if table_length > window_width:
-        print("The table is too big for the screen!")
+        print("\nThe table is too big for the screen!")
         table_length = int(input(f"Enter a value smaller than {window_width} for the table: ")) 
     elif table_height > window_height:
-        print("The table is too tall for the screen!")
+        print("\nThe table is too tall for the screen!")
         table_height = int(input(f"Enter a value smaller than {window_height} for the table: "))
     elif cake_radius > window_width:
-        print("The cake is too big for the screen!")
+        print("\nThe cake is too big for the screen!")
         cake_radius = int(input(f"Enter a value smaller than {table_length/2} for your cake: "))
     elif cake_radius > table_length/2:
-        print("The cake is too big for the table!")
+        print("\nThe cake is too big for the table!")
         cake_radius = int(input(f"Enter a value smaller than {table_length/2} for your cake: "))
     else:
-        print("The cake fits on the table! Enjoy your cake!")
+        print("\nThe cake fits on the table! Enjoy your cake!")
 
     t.screensize(canvwidth=window_width, canvheight=window_height, bg="LightBlue1")  #Setting up the screen
     tweak() #Setting up the turtle for drawing
+
+    #Drawing functions
+    draw_background_decorations()
     draw_table(table_length, table_height, table_color) #Drawing the table
     plate(cake_radius) #Drawing the plate for the cake
-    t.goto(0,0) #Moving the turtle to the center of the plate
-    prepare_next_layer(cake_radius*0.2) #Moving the turtle to the first layer of the cake
+    prepare_next_layer(cake_radius*0.2) #Moving the turtle to the first layer of the cake, above the plate
     cake(cake_radius) #Drawing the cake
+    
+    t.hideturtle() #Hiding the turtle
     print("\n\nEnjoy your cake!")
     t.exitonclick()
 
