@@ -27,6 +27,7 @@ def plate(radius): #Drawing the plate for the cake
     t.setheading(east)
     t.pendown()
     t.fillcolor("gray60")
+    t.pencolor("black")
     t.begin_fill()
     t.forward(radius*1.5) #Bottom side first half
     t.left(90)
@@ -49,6 +50,7 @@ def cake_layer(color, width, height): #Drawing the cake layers with the given co
     t.setheading(east)
     t.pendown()
     t.fillcolor(color)
+    t.pencolor(color)
     t.begin_fill()
     t.forward(width) #Bottom side first half
     t.left(90)
