@@ -212,6 +212,7 @@ def star(starlocation,color): #Star drawing function
 
 #*********************************************************************************************************************
 #Tariq
+# Function to draw a triangle
 def draw_triangle(color, x, y):
     t.speed(0)
     t.penup()
@@ -219,10 +220,10 @@ def draw_triangle(color, x, y):
     t.pendown()
     t.fillcolor(color)
     t.begin_fill()
-    t.setheading(180)  # Set the t facing downwards
-    #Drawing the triangle sides
+    t.setheading(180)  # Set the turtle facing downwards
+    # Drawing the triangle sides
     t.forward(50)  # Triangle side length
-    t.left(120)    # Turn the t 120 degrees
+    t.left(120)    # Turn the turtle 120 degrees
     t.forward(50)
     t.left(120)
     t.forward(50)
@@ -236,7 +237,7 @@ def draw_line(x_start, y_start, x_end, y_end):
     t.pendown()
     t.goto(x_end, y_end)
 
-def draw_background_decorations(): #Drawing the background decorations for the table
+def draw_background_decorations():  # Drawing the background decorations for the table
     draw_triangle("red", -350, 400)
     draw_line(-350, 400, -280, 400)
     draw_triangle("blue", -280, 400)
@@ -260,6 +261,13 @@ def draw_background_decorations(): #Drawing the background decorations for the t
     draw_triangle("lime", 350, 400)
     draw_line(350, 400, 420, 400)
     draw_triangle("teal", 420, 400)
+
+def draw_birthday_message():
+    t.penup()
+    t.goto(0, 260)  # Position the message below the triangles
+    t.pendown()
+    t.color("black")
+    t.write("Happy Birthday!", align="center", font=("Arial", 24, "bold"))
 
 
 #Noureldin.
@@ -304,6 +312,7 @@ def main(): #Main function to draw the table and the cake
 
     #Drawing functions
     draw_background_decorations()
+    draw_birthday_message()
     draw_table(table_length, table_thickness, table_color) #Drawing the table
     plate(cake_radius) #Drawing the plate for the cake
     prepare_next_layer(cake_radius*0.2) #Moving the turtle to the first layer of the cake, above the plate
