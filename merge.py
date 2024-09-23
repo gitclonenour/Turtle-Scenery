@@ -263,36 +263,45 @@ def main(): #Main function to draw the table and the cake
 
     print("\n\nWelcome to the cake drawing program!")
     table_color = input("Enter the color of the table: ") #Asking the user for the color of the table
-    print("\nWe recommend a table length between 200 and 400.")
+    print("\nWe recommend a table length between 200 and 400.\nMinimum value is 100.")
     table_length = int(input("Enter the length of the table: ")) #Asking the user for the length of the table
-    print("\nWe recommend a table height of 40.")
-    table_height = int(input("Enter the height of the table: ")) #Asking the user for the height of the table
+    print("\nWe recommend a table height of 40.\nMinimum value is 20.")
+    table_thickness = int(input("Enter the thickness of the table: ")) #Asking the user for the height of the table
     print("\nWe recommend a cake radius of at least 50.")
     cake_radius = int(input("Enter the radius of the cake: ")) #Asking the user for the radius of the cake
     
     #Validity checks by Noureldin.
     #Limitation: The program only does this validity check once. If the user enters an invalid value again, the program will proceed.
-    if table_length > window_width:
+    if table_length > window_width: #Checking if the table is too big for the screen
         print("\nThe table is too big for the screen!")
         table_length = int(input(f"Enter a value smaller than {window_width} for the table: ")) 
-    elif table_height > window_height:
-        print("\nThe table is too tall for the screen!")
-        table_height = int(input(f"Enter a value smaller than {window_height} for the table: "))
-    elif cake_radius > window_width:
+    elif table_thickness > window_height:
+        print("\nThe table is too thick for the screen!")
+        table_thickness = int(input(f"Enter a value smaller than {window_height} for the table: "))
+    elif cake_radius > window_width: #Checking if the cake is too big for the screen
         print("\nThe cake is too big for the screen!")
         cake_radius = int(input(f"Enter a value smaller than {table_length/2} for your cake: "))
-    elif cake_radius > table_length/2:
+    elif cake_radius > table_length/2: #Checking if the cake is too big for the table. Cannot exceed half the table's length.
         print("\nThe cake is too big for the table!")
         cake_radius = int(input(f"Enter a value smaller than {table_length/2} for your cake: "))
+    elif table_length < 100: #Checking if the table is too small
+        print("\nThe table is too small!")
+        table_length = int(input("Enter a value larger than 100 for the table: "))
+    elif table_thickness < 20: #Checking if the table is too thin
+        print("\nThe table height is too thin!")
+        table_thickness = int(input("Enter a value larger than 20 for the table thickness: "))
+    elif cake_radius < 25: #Checking if the cake is too small
+        print("\nThe cake is too small!")
+        cake_radius = int(input("Enter a value larger than 25 for your cake: "))
     else:
-        print("\nThe cake fits on the table! Enjoy your cake!")
+        print("\nThe cake fits on the table! Drawing your cake...")
 
     t.screensize(canvwidth=window_width, canvheight=window_height, bg="LightBlue1")  #Setting up the screen
     tweak() #Setting up the turtle for drawing
 
     #Drawing functions
     draw_background_decorations()
-    draw_table(table_length, table_height, table_color) #Drawing the table
+    draw_table(table_length, table_thickness, table_color) #Drawing the table
     plate(cake_radius) #Drawing the plate for the cake
     prepare_next_layer(cake_radius*0.2) #Moving the turtle to the first layer of the cake, above the plate
     cake(cake_radius) #Drawing the cake
