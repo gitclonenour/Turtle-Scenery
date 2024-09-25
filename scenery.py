@@ -6,6 +6,7 @@ The table will have four legs and a top with the given color, length, and height
 Project by: Noureldin, Saloni, Tariq, and Mehdi
 """
 import turtle as t
+from turtle import Screen
 
 #Noureldin
 
@@ -14,8 +15,8 @@ east = 0
 north = 90
 west = 180
 south = 270
-window_width = 400
-window_height = 300
+window_width = 1000
+window_height = 900
 
 def tweak(): #Setting up turtle for the drawing
     t.pencolor("black")
@@ -65,7 +66,7 @@ def cake_layer(color, width, height): #Drawing the cake layers with the given co
     t.penup()
 
 def cake(radius): #Drawing the cake with the given radius
-    #Setting up the height of the layers using the radius
+    #Setting up the height of the layers using the radius to maintain a specific ratio
     layer1_height = radius*0.6 
     layer2_height = radius*0.3
     layer3_height = radius*0.15
@@ -309,7 +310,8 @@ def main(): #Main function to draw the table and the cake
     else:
         print("\nThe cake fits on the table! Drawing your cake...")
 
-    t.screensize(canvwidth=window_width, canvheight=window_height, bg="LightBlue1")  #Setting up the screen
+    t.setup(window_width, window_height)  #Setting up the screen
+    t.bgcolor("LightBlue1")
     tweak() #Setting up the turtle for drawing
 
     #Drawing functions
