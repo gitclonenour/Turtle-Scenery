@@ -138,20 +138,20 @@ def main():
 
     t.screensize(canvwidth=window_width, canvheight=window_height, bg="LightBlue1")  #Setting up the screen
 
-    """
+    
     table_color = input("Enter the color of the table: ") #Asking the user for the color of the table
     print("\nWe recommend a table length of at least 200.")
     table_length = int(input("Enter the length of the table: ")) #Asking the user for the length of the table
     print("\nWe recommend a table height of 40.")
     table_height = int(input("Enter the height of the table: ")) #Asking the user for the height of the table
     cake_radius = int(input("Enter the radius of the cake: ")) #Asking the user for the radius of the cake
-    """
-    #Debugging
+    
+    """#Debugging
     
     table_color = "brown"
     table_length = 401
     table_height = 40
-    cake_radius = 75
+    cake_radius = 75"""
     
     #Validity checks by Noureldin.
     #Limitation: The program only does this validity check once. If the user enters an invalid value again, the program will proceed.

@@ -83,9 +83,10 @@ def cake(radius): #Drawing the cake with the given radius
 
     decorations(star_location, radius)  # Pass radius to the decorations function
 
-#*********************************************************************************************************************
+#***********************************************************************************************
 #Saloni
 def draw_table(length, height, color): #Drawing the table with the given length, height, and color
+    
     def reset_turtle(heading, distance): #Resetting the turtle to the starting position for drawing the next leg
         t.goto(0,-height) #Moving the turtle to the bottom of the table
         t.setheading(heading)
@@ -118,7 +119,7 @@ def draw_table(length, height, color): #Drawing the table with the given length,
     t.forward(100)
     t.penup()
 
-    reset_turtle(west, 0.6)
+    reset_turtle(west, 0.6) #Moving the turtle 60% of the table's length in the west direction.
     #Second leg
     t.pendown()
     t.setheading(south)
@@ -139,7 +140,7 @@ def draw_table(length, height, color): #Drawing the table with the given length,
     t.forward(80)
     t.penup()
 
-#*********************************************************************************************************************
+#***********************************************************************************************
 #Mehdi
 def decorations(second_layer_height, radius): #Drawing decorations on the cake
     print("\nTime to decorate your cake!\n")
@@ -213,11 +214,10 @@ def star(starlocation,color): #Star drawing function
     t.right(144)
     t.end_fill()
 
-#*********************************************************************************************************************
+#***********************************************************************************************
 #Tariq
 # Function to draw a triangle
 def draw_triangle(color, x, y):
-    t.speed(0)
     t.penup()
     t.goto(x, y)
     t.pendown()
